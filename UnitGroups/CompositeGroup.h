@@ -7,7 +7,7 @@
 #include "UnitsGroup.h"
 #include "FightingSkill.h"
 #include "Economy.h"
-#include "FightingMode.h"
+#include "FightingLogic/FightingMode.h"
 
 class CompositeGroup {
     std::vector<UnitsGroup*> _children;

@@ -4,7 +4,7 @@
 
 
 #include <vector>
-#include "UnitsGroup.h"
+#include "../UnitsGroup.h"
 
 class FightingMode {
 public:
