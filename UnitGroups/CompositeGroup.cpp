@@ -2,19 +2,19 @@
 #include "CompositeGroup.h"
 
 void CompositeGroup::add(UnitsGroup *group) {
-    children.push_back(group);
+    _children.push_back(group);
 }
 
 void CompositeGroup::remove(UnitsGroup *group) {
-    children.erase(std::remove(children.begin(), children.end(), group), children.end());
+    _children.erase(std::remove(_children.begin(), _children.end(), group), _children.end());
 }
 
 std::vector<UnitsGroup *> CompositeGroup::get_children() {
-    return children;
+    return _children;
 }
 
 void CompositeGroup::execute() {
-    for (auto& child : children) {
+    for (auto& child : _children) {
         child->execute();
     }
 }
