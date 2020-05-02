@@ -7,7 +7,7 @@
 
 class Soldier : public Unit {
 public:
-    virtual void say() = 0;
+    void say() override;
 };
 
 

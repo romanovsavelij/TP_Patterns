@@ -6,7 +6,8 @@
 #include "Unit.h"
 
 class MachineGunner : public Unit {
-
+public:
+    void say() override;
 };
 
 

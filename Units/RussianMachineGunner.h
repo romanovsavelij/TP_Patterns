@@ -6,7 +6,8 @@
 #include "MachineGunner.h"
 
 class RussianMachineGunner : public MachineGunner {
-
+public:
+    void say() override;
 };
 
 

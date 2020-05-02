@@ -6,7 +6,8 @@
 #include "Sniper.h"
 
 class GermanSniper : public Sniper {
-
+public:
+    void say() override;
 };
 
 

@@ -6,7 +6,8 @@
 #include "Unit.h"
 
 class Sniper : public Unit {
-
+public:
+    void say() override;
 };
 
 

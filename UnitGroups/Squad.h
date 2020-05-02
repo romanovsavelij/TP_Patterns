@@ -4,6 +4,7 @@
 
 
 #include "UnitsGroup.h"
+#include "CompositeGroup.h"
 
 class Squad : public CompositeGroup {
 };

@@ -40,6 +40,8 @@ UnitLeaf и CompositeGroup наследуются от UnitsGroup, базово�
 Для того, чтобы отделить сущности FightingLogic и FighterMode 
 я воспользовался паттерном Bridge.
 
+[Схема архитектуры](https://drive.google.com/file/d/1kgpVNMjmEqJVUYfuTLnlSw9DuL1Nl_OY/view?usp=sharing)
+
 
 
 

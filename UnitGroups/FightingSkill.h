@@ -2,8 +2,7 @@
 #ifndef TP_PATTERNS_FIGHTINGSKILL_H
 #define TP_PATTERNS_FIGHTINGSKILL_H
 
-
-#include <opencl-c.h>
+#include <cstdio>
 
 class FightingSkill {
 private:

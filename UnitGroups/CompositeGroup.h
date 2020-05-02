@@ -8,12 +8,12 @@
 #include "FightingSkill.h"
 #include "Economy.h"
 #include "FightingLogic/FightingMode.h"
+#include "FightingLogic/FightingLogic.h"
 
 class CompositeGroup {
     std::vector<UnitsGroup*> _children;
-    FightingSkill* _fighting_skill;
+    FightingLogic* _fighting_logic;
     Economy* _economy;
-    FightingMode* _fighting_mode;
 public:
     void add(UnitsGroup* group);
     void remove(UnitsGroup* group);

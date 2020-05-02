@@ -4,7 +4,8 @@
 
 
 class Unit {
-
+public:
+    virtual void say() = 0;
 };
 
 
