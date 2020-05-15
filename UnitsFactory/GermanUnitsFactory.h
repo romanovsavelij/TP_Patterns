@@ -9,7 +9,6 @@ class GermanUnitsFactory : public UnitsFactory {
 public:
     Soldier* createSoldier() override;
     Sniper* createSniper() override;
-    MachineGunner* createMachineGunner() override;
 };
 
 

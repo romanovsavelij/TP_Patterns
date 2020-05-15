@@ -3,9 +3,17 @@
 #define TP_PATTERNS_UNIT_H
 
 
-class Unit {
+#include "../UnitGroups/UnitsGroup.h"
+#include "../constants.h"
+
+class Unit : public UnitsGroup {
+private:
+    int _position = 0;
 public:
     virtual void say() = 0;
+    void moveRight() override;
+    void setDefaultPosition(bool isRussianUnit);
+    virtual void execute() override {}
 };
 
 

@@ -7,6 +7,8 @@
 
 class RussianSoldier : public Soldier {
 public:
+    RussianSoldier();
+
     void say() override;
 };
 

@@ -1,0 +1,8 @@
+
+#ifndef TP_PATTERNS_CONSTANTS_H
+#define TP_PATTERNS_CONSTANTS_H
+
+#endif //TP_PATTERNS_CONSTANTS_H
+
+
+const int FIELD_SIZE = 8;

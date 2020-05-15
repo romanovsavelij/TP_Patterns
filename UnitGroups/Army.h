@@ -4,7 +4,7 @@
 
 
 #include "CompositeGroup.h"
-#include "FightingSkill.h"
+#include "../Fighting/FightingSkill.h"
 
 class Army : public CompositeGroup {
 
