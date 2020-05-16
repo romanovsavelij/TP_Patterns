@@ -7,7 +7,10 @@
 
 class Sniper : public Unit {
 public:
+    Sniper() : Unit(SNIPER_HEALTH) {}
+
     void say() override;
+    void attack(Unit* unit) override;
 };
 
 

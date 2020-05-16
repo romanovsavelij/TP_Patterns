@@ -15,3 +15,11 @@ void Unit::moveRight() {
     }
     ++_position;
 }
+
+void Unit::defence(int attack) {
+    _health -= attack;
+}
+
+void Unit::print() {
+    std::cout << "unit: " << "position = " << _position << " health = " << _health << std::endl;
+}

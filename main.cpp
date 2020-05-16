@@ -25,28 +25,34 @@ int main() {
     std::string command;
     bool russianTurn = true;
     while (std::cin >> command) {
-        Army currentArmy;
+        Army* currentArmy;
+        UnitsFactory* factory;
         if (russianTurn) {
-            currentArmy = russianArmy;
+            currentArmy = &russianArmy;
+            factory = new RussianUnitsFactory();
         } else {
-            currentArmy = germanArmy;
+            currentArmy = &germanArmy;
+            factory = new GermanUnitsFactory();
         }
         if (command == "create_soldier" || command == "cs") {
-            if (russianTurn) {
-                Soldier* newRussianSoldier = russianUnitsFactory->createSoldier();
-                russianArmy.add(newRussianSoldier);
-            } else {
-                Soldier* newGermanSoldier = germanUnitsFactory->createSoldier();
-                germanArmy.add(newGermanSoldier);
-            }
+            Soldier* newSoldier = factory->createSoldier();
+            currentArmy->add(newSoldier);
         } else if (command == "create_sniper") {
-            // todo
+            Sniper* newSniper = factory->createSniper();
+            currentArmy->add(newSniper);
         } else if (command == "move_right" || command == "mr") {
-            currentArmy.moveRight();
+            currentArmy->moveRight();
         } else if (command == "move_left") {
-            // todo
+            //currentArmy->moveLeft();
         }
-        Fighter::fight(&russianArmy, &germanArmy);
+        Fighter::fight(&russianArmy, &germanArmy, russianTurn);
+
+        std::cout << "Russia" << std::endl;
+        russianArmy.print();
+
+        std::cout << "Germany" << std::endl;
+        germanArmy.print();
+
         russianTurn = !russianTurn;
     }
 

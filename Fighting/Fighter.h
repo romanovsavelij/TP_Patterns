@@ -7,7 +7,7 @@
 
 class Fighter {
 public:
-    static void fight(Army* army1, Army* army2);
+    static void fight(Army* army1, Army* army2, bool russianTurn);
 };
 
 
