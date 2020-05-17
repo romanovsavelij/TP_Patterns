@@ -26,3 +26,7 @@ bool Field::germanWin() {
 bool Field::gameOver() {
     return russiansWin() || germanWin();
 }
+
+bool Field::canMoveTo(int from, int to) {
+    return getCellType(from) * getCellType(to) != -1;
+}

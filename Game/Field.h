@@ -18,6 +18,7 @@ public:
     bool russiansWin();
     bool germanWin();
     bool gameOver();
+    bool canMoveTo(int from, int to);
 };
 
 

@@ -14,33 +14,43 @@ Game::Game() : _field(Field(&_russianArmy, &_germanArmy)) {
     _germanUnitsFactory = new GermanUnitsFactory(&_field);
 }
 
+bool Game::_makeTurn(const std::string& input) {
+    Army* currentArmy;
+    Army* enemyArmy;
+    UnitsFactory* factory;
+    if (_russianTurn) {
+        currentArmy = &_russianArmy;
+        enemyArmy = &_germanArmy;
+        factory = _russianUnitsFactory;
+    } else {
+        currentArmy = &_germanArmy;
+        enemyArmy = &_russianArmy;
+        factory = _germanUnitsFactory;
+    }
+
+    Command* command = _parseInput(input, factory, currentArmy, enemyArmy);
+    if (command) {
+        _executeCommand(command);
+        printState();
+        if (_isGameOver()) {
+            return false;
+        }
+        _russianTurn = !_russianTurn;
+    } else {
+        std::cout << INVALID_INPUT << std::endl;
+    }
+    return true;
+}
+
 void Game::start() {
     std::cout << INSTRUCTION << std::endl;
 
     std::string input;
     while (std::cin >> input) {
-        Army* currentArmy;
-        Army* enemyArmy;
-        UnitsFactory* factory;
-        if (_russianTurn) {
-            currentArmy = &_russianArmy;
-            enemyArmy = &_germanArmy;
-            factory = _russianUnitsFactory;
-        } else {
-            currentArmy = &_germanArmy;
-            enemyArmy = &_russianArmy;
-            factory = _germanUnitsFactory;
-        }
-
-        _parseInput(input, factory, currentArmy, enemyArmy);
-
-        printState();
-
-        if (_isGameOver()) {
+        if (!_makeTurn(input)) {
+            // Game over
             break;
         }
-
-        _russianTurn = !_russianTurn;
     }
 }
 
@@ -56,25 +66,19 @@ void Game::_executeCommand(Command* command) {
     command->execute();
 }
 
-void Game::_parseInput(std::string input, UnitsFactory* factory, Army* currentArmy, Army* enemyArmy) {
-    Command* command;
+Command* Game::_parseInput(std::string input, UnitsFactory* factory, Army* currentArmy, Army* enemyArmy) {
     if (input == "create_soldier" || input == "cso") {
-        command = new CreateSoldierCommand(factory, currentArmy);
+        return new CreateSoldierCommand(factory, currentArmy);
     } else if (input == "create_sniper" || input == "csn") {
-        command = new CreateSoldierCommand(factory, currentArmy);
+        return new CreateSoldierCommand(factory, currentArmy);
     } else if (input == "move_right" || input == "mr") {
-        command = new MoveRightCommand(factory, currentArmy);
+        return new MoveRightCommand(factory, currentArmy);
     } else if (input == "move_left" || input == "ml") {
-        command = new MoveLeftCommand(factory, currentArmy);
+        return new MoveLeftCommand(factory, currentArmy);
     } else if (input == "attack" || input == "a") {
-        command = new AttackCommand(currentArmy, enemyArmy);
+        return new AttackCommand(currentArmy, enemyArmy);
     }
-
-    if (command) {
-        _executeCommand(command);
-    } else {
-        std::cout << INVALID_INPUT << std::endl;
-    }
+    return nullptr; // Unknown command
 }
 
 bool Game::_isGameOver() {
