@@ -4,6 +4,10 @@
 #include "../UnitsFactory/RussianUnitsFactory.h"
 #include "../UnitsFactory/GermanUnitsFactory.h"
 #include "../Fighting/Fighter.h"
+#include "Commands/CreateSoldierCommand.h"
+#include "Commands/MoveLeftCommand.h"
+#include "Commands/MoveRightCommand.h"
+#include "Commands/AttackCommand.h"
 #include <iostream>
 
 Game::Game() : _field(Field(&_russianArmy, &_germanArmy)) {
@@ -12,8 +16,10 @@ Game::Game() : _field(Field(&_russianArmy, &_germanArmy)) {
 }
 
 void Game::start() {
-    std::string command;
-    while (std::cin >> command) {
+    std::cout << INSTRUCTION << std::endl;
+
+    std::string input;
+    while (std::cin >> input) {
         Army* currentArmy;
         UnitsFactory* factory;
         if (_russianTurn) {
@@ -23,18 +29,10 @@ void Game::start() {
             currentArmy = &_germanArmy;
             factory = _germanUnitsFactory;
         }
-        if (command == "create_soldier" || command == "cs") {
-            Soldier* newSoldier = factory->createSoldier();
-            currentArmy->add(newSoldier);
-        } else if (command == "create_sniper") {
-            Sniper* newSniper = factory->createSniper();
-            currentArmy->add(newSniper);
-        } else if (command == "move_right" || command == "mr") {
-            currentArmy->moveRight();
-        } else if (command == "move_left") {
-            //currentArmy->moveLeft();
-        }
-        Fighter::fight(&_russianArmy, &_germanArmy, _russianTurn);
+
+        _parseInput(input, factory, currentArmy);
+
+        //Fighter::fight(&_russianArmy, &_germanArmy, _russianTurn);
         printState();
         _russianTurn = !_russianTurn;
     }
@@ -46,4 +44,33 @@ void Game::printState() {
 
     std::cout << "Germany" << std::endl;
     _germanArmy.print();
+}
+
+void Game::_executeCommand(Command* command) {
+    command->execute();
+}
+
+void Game::_parseInput(std::string input, UnitsFactory* factory, Army* currentArmy) {
+    Command* command;
+    if (input == "create_soldier" || input == "cso") {
+        command = new CreateSoldierCommand(factory, currentArmy);
+    } else if (input == "create_sniper" || input == "csn") {
+        command = new CreateSoldierCommand(factory, currentArmy);
+    } else if (input == "move_right" || input == "mr") {
+        command = new MoveLeftCommand(factory, currentArmy);
+    } else if (input == "move_left" || input == "ml") {
+        command = new MoveRightCommand(factory, currentArmy);
+    } else if (input == "attack" || input == "a") {
+        if (_russianTurn) {
+            command = new AttackCommand(&_russianArmy, &_germanArmy);
+        } else {
+            command = new AttackCommand(&_germanArmy, &_russianArmy);
+        }
+    }
+
+    if (command) {
+        _executeCommand(command);
+    } else {
+        std::cout << INVALID_INPUT << std::endl;
+    }
 }

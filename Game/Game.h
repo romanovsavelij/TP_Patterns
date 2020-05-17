@@ -5,6 +5,9 @@
 
 #include "../UnitGroups/Army.h"
 #include "../UnitsFactory/UnitsFactory.h"
+#include "Commands/Command.h"
+
+class Command;
 
 class Game {
 private:
@@ -14,6 +17,9 @@ private:
     UnitsFactory* _russianUnitsFactory;
     UnitsFactory* _germanUnitsFactory;
     bool _russianTurn = true;
+
+    void _executeCommand(Command* command);
+    void _parseInput(std::string input, UnitsFactory* factory, Army* currentArmy);
 public:
     Game();
 

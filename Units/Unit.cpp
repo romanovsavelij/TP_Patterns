@@ -17,6 +17,15 @@ void Unit::moveRight() {
     ++_position;
 }
 
+void Unit::moveLeft() {
+    std::cout << "unit moves left" << std::endl;
+    if (_position == 0 ||
+        (_field->getCellType(_position) * _field->getCellType(_position - 1) == 1)) {
+        return;
+    }
+    --_position;
+}
+
 void Unit::defence(int attack) {
     _health -= attack;
 }

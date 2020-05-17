@@ -6,7 +6,7 @@ class UnitsGroup {
 public:
     virtual void execute() = 0;
     virtual void moveRight() = 0;
-    // virtual void moveLeft();
+    virtual void moveLeft() = 0;
 };
 
 

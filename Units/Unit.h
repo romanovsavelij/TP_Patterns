@@ -21,6 +21,7 @@ public:
 
     virtual void say() = 0;
     void moveRight() override;
+    void moveLeft() override;
     void setDefaultPosition(bool isRussianUnit);
     virtual void execute() override {}
     virtual void attack(Unit* unit) = 0;

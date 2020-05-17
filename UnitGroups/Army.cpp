@@ -27,6 +27,12 @@ void Army::moveRight() {
     }
 }
 
+void Army::moveLeft() {
+    for (auto& child : _children) {
+        child->moveLeft();
+    }
+}
+
 void Army::attack(Army* group) {
     for (auto& unit : _children) {
         for (auto& enemyUnit : group->getChildren()) {

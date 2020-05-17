@@ -20,6 +20,7 @@ public:
     void add(Unit* group);
     void remove(Unit* group);
     void moveRight() override;
+    void moveLeft() override ;
     std::vector<Unit*> getChildren();
     void execute() override;
     void attack(Army* compositeGroup);
