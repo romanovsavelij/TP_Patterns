@@ -11,13 +11,17 @@ const int START_COINS_COUNT = 7;
 // Units
 const int SNIPER_HEALTH = 5;
 const int SNIPER_ATTACK = 4;
+const int SNIPER_ATTACK_RADIOUS = 3;
+
 
 const int SOLDIER_HEALTH = 8;
 const int SOLDIER_ATTACK = 2;
+const int SOLDIER_ATTACK_RADIOUS = 1;
 
 // Economy
 const int SOLDIER_COST = 2;
 const int SNIPER_COST = 3;
+const int COINS_PER_KILL = 4;
 
 
 // Messages

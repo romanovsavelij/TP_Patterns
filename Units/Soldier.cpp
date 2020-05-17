@@ -7,7 +7,7 @@ void Soldier::say() {
 }
 
 void Soldier::attack(Unit *unit) {
-    if (abs(unit->getPosition() - getPosition()) == 1) {
+    if (abs(unit->getPosition() - getPosition()) == SOLDIER_ATTACK_RADIOUS) {
         unit->defence(SOLDIER_ATTACK);
     }
 }

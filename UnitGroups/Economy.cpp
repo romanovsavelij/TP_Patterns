@@ -24,7 +24,7 @@ int Economy::getCoins() {
 }
 
 void Economy::killedUnits(int killedUnitsCount) {
-    _coins += killedUnitsCount * 4;
+    _coins += killedUnitsCount * COINS_PER_KILL;
 }
 
 
