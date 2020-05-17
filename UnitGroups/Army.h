@@ -10,6 +10,8 @@
 #include "../Fighting/FightingLogic/FightingLogic.h"
 #include "../Units/Unit.h"
 
+class Unit;
+
 class Army : public UnitsGroup {
     std::vector<Unit*> _children;
     FightingLogic* _fighting_logic;
@@ -22,6 +24,7 @@ public:
     void execute() override;
     void attack(Army* compositeGroup);
     void print();
+    void update();
 };
 
 #endif //TP_PATTERNS_ARMY_H

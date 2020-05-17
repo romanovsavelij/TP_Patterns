@@ -8,6 +8,7 @@
 class Sniper : public Unit {
 public:
     Sniper() : Unit(SNIPER_HEALTH) {}
+    explicit Sniper(Field* field) : Unit(field, SNIPER_HEALTH) {}
 
     void say() override;
     void attack(Unit* unit) override;

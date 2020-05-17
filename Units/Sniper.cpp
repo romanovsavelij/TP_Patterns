@@ -7,5 +7,7 @@ void Sniper::say() {
 }
 
 void Sniper::attack(Unit *unit) {
-    unit->defence(SNIPER_ATTACK);
+    if (abs(unit->getPosition() - getPosition()) <= 3) {
+        unit->defence(SNIPER_ATTACK);
+    }
 }

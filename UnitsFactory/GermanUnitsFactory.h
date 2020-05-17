@@ -7,6 +7,9 @@
 
 class GermanUnitsFactory : public UnitsFactory {
 public:
+    GermanUnitsFactory() = default;
+    explicit GermanUnitsFactory(Field* field) : UnitsFactory(field) {}
+
     Soldier* createSoldier() override;
     Sniper* createSniper() override;
 };

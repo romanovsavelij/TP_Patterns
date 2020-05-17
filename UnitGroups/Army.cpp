@@ -33,6 +33,7 @@ void Army::attack(Army* group) {
             unit->attack(enemyUnit);
         }
     }
+    group->update();
 }
 
 void Army::print() {
@@ -40,4 +41,14 @@ void Army::print() {
     for (auto& unit : _children) {
         unit->print();
     }
+}
+
+void Army::update() {
+    std::vector<Unit*> newChildren;
+    for (auto& unit : _children) {
+        if (unit->isAlive()) {
+            newChildren.push_back(unit);
+        }
+    }
+    _children = newChildren;
 }

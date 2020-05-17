@@ -4,9 +4,9 @@
 #include "../Units/RussianSniper.h"
 
 Soldier* RussianUnitsFactory::createSoldier() {
-    return new RussianSoldier();
+    return new RussianSoldier(_field);
 }
 
 Sniper* RussianUnitsFactory::createSniper() {
-    return new RussianSniper();
+    return new RussianSniper(_field);
 }

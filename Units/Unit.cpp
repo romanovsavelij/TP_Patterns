@@ -10,7 +10,8 @@ void Unit::setDefaultPosition(bool isRussianUnit) {
 
 void Unit::moveRight() {
     std::cout << "unit moves right" << std::endl;
-    if (_position == FIELD_SIZE - 1) {
+    if (_position == FIELD_SIZE - 1 ||
+    (_field->getCellType(_position) * _field->getCellType(_position + 1) == 1)) {
         return;
     }
     ++_position;
@@ -22,4 +23,12 @@ void Unit::defence(int attack) {
 
 void Unit::print() {
     std::cout << "unit: " << "position = " << _position << " health = " << _health << std::endl;
+}
+
+int Unit::getPosition() {
+    return _position;
+}
+
+bool Unit::isAlive() {
+    return _health > 0;
 }

@@ -7,6 +7,9 @@
 
 class RussianSniper : public Sniper {
 public:
+    RussianSniper() = default;
+    explicit RussianSniper(Field* field) : Sniper(field) {}
+
     void say() override;
 };
 

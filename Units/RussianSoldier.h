@@ -8,6 +8,8 @@
 class RussianSoldier : public Soldier {
 public:
     RussianSoldier();
+    explicit RussianSoldier(Field* field) : Soldier(field) {}
+
     void say() override;
 };
 

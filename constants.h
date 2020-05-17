@@ -4,8 +4,8 @@
 
 #endif //TP_PATTERNS_CONSTANTS_H
 
-// Field
-const int FIELD_SIZE = 8;
+// Game
+const int FIELD_SIZE = 2; // 8
 
 // Units
 const int SNIPER_HEALTH = 5;

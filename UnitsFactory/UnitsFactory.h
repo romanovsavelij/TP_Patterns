@@ -7,7 +7,12 @@
 #include "../Units/Sniper.h"
 
 class UnitsFactory {
+protected:
+    Field* _field;
 public:
+    UnitsFactory() {}
+    UnitsFactory(Field* field) : _field(field) {}
+
     virtual Soldier* createSoldier() = 0;
     virtual Sniper* createSniper() = 0;
 };

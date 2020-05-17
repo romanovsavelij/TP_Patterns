@@ -7,6 +7,9 @@
 
 class GermanSniper : public Sniper {
 public:
+    GermanSniper();
+    explicit GermanSniper(Field* field);
+
     void say() override;
 };
 
