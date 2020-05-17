@@ -1,20 +1,7 @@
 
 #include "Field.h"
 
-Field::Field() {}
-
-Field::Field(Army *russianArmy, Army *germanArmy) : _russianArmy(russianArmy), _germanArmy(germanArmy) {}
-
-/*void Game::refresh() {
-    for (auto& unit : _russianArmy->getChildren()) {
-        _cells[unit->getPosition()] = true;
-    }
-    for (auto& unit : _germanArmy->getChildren()) {
-        _cells[unit->getPosition()] = false;
-    }
-}*/
-
-bool Field::getCellType(int position) {
+int Field::getCellType(int position) {
     for (auto& unit : _russianArmy->getChildren()) {
         if (unit->getPosition() == position) {
             return -1;
@@ -26,4 +13,16 @@ bool Field::getCellType(int position) {
         }
     }
     return 0;
+}
+
+bool Field::russiansWin() {
+    return getCellType(FIELD_SIZE - 1) == -1;
+}
+
+bool Field::germanWin() {
+    return getCellType(0) == 1;
+}
+
+bool Field::gameOver() {
+    return russiansWin() || germanWin();
 }

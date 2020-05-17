@@ -19,7 +19,8 @@ private:
     bool _russianTurn = true;
 
     void _executeCommand(Command* command);
-    void _parseInput(std::string input, UnitsFactory* factory, Army* currentArmy);
+    void _parseInput(std::string input, UnitsFactory* factory, Army* currentArmy, Army* enemyArmy);
+    bool _isGameOver();
 public:
     Game();
 

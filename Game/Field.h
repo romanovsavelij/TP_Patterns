@@ -10,14 +10,14 @@ class Army;
 class Field {
     Army* _russianArmy;
     Army* _germanArmy;
-    //std::vector<int> _cells;
 public:
-    Field();
-    Field(Army* russianArmy, Army* germanArmy);
+    Field() {}
+    Field(Army *russianArmy, Army *germanArmy) : _russianArmy(russianArmy), _germanArmy(germanArmy) {}
 
-    bool getCellType(int position); // 0 - empty, -1 - russian, 1 - russian
-    // void makeMoveTo(int coordinate, bool russianTurn);
-    // void refresh();
+    int getCellType(int position); // 0 - empty, -1 - russian, 1 - russian
+    bool russiansWin();
+    bool germanWin();
+    bool gameOver();
 };
 
 

@@ -3,7 +3,6 @@
 #include "UnitsFactory/RussianUnitsFactory.h"
 #include "UnitsFactory/GermanUnitsFactory.h"
 #include "UnitGroups/Army.h"
-#include "Fighting/Fighter.h"
 #include "Game/Field.h"
 #include "Game/Game.h"
 

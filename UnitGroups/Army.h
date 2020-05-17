@@ -5,27 +5,31 @@
 
 #include <vector>
 #include "UnitsGroup.h"
-#include "../Fighting/FightingSkill.h"
 #include "Economy.h"
-#include "../Fighting/FightingLogic/FightingLogic.h"
 #include "../Units/Unit.h"
 
 class Unit;
+class Sniper;
+class Soldier;
 
 class Army : public UnitsGroup {
     std::vector<Unit*> _children;
-    FightingLogic* _fighting_logic;
-    Economy* _economy;
+    Economy _economy;
+
+    void _addUnit(Unit* unit);
 public:
-    void add(Unit* group);
+    void addSoldier(Soldier* unit);
+    void addSniper(Sniper* unit);
     void remove(Unit* group);
     void moveRight() override;
-    void moveLeft() override ;
+    void moveLeft() override;
     std::vector<Unit*> getChildren();
     void execute() override;
-    void attack(Army* compositeGroup);
+    void attack(Army* enemyArmy);
     void print();
     void update();
+    int getUnitsCount();
+    bool isEmpty();
 };
 
 #endif //TP_PATTERNS_ARMY_H

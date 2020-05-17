@@ -11,7 +11,7 @@ void Unit::setDefaultPosition(bool isRussianUnit) {
 void Unit::moveRight() {
     std::cout << "unit moves right" << std::endl;
     if (_position == FIELD_SIZE - 1 ||
-    (_field->getCellType(_position) * _field->getCellType(_position + 1) == 1)) {
+    (_field->getCellType(_position) * _field->getCellType(_position + 1) == -1)) {
         return;
     }
     ++_position;
@@ -20,7 +20,7 @@ void Unit::moveRight() {
 void Unit::moveLeft() {
     std::cout << "unit moves left" << std::endl;
     if (_position == 0 ||
-        (_field->getCellType(_position) * _field->getCellType(_position - 1) == 1)) {
+    (_field->getCellType(_position) * _field->getCellType(_position - 1) == -1)) {
         return;
     }
     --_position;

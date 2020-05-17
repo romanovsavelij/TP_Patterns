@@ -4,12 +4,17 @@
 
 
 #include <cstdio>
+#include "../constants.h"
 
 class Economy {
-    size_t _coins;
+    size_t _coins = START_COINS_COUNT;
 public:
-    void win();
-    void lose();
+    bool canAffordSoldier();
+    bool canAffordSniper();
+    void buySoldier();
+    void buySniper();
+    int getCoins();
+    void killedUnits(int killedUnitsCount);
 };
 
 

@@ -1,10 +1,30 @@
 
 #include <iostream>
 #include "Army.h"
+#include "../Units/Soldier.h"
+#include "../Units/Sniper.h"
 
-void Army::add(Unit* group) {
+void Army::_addUnit(Unit* group) {
     std::cout << "new unit in this army" << std::endl;
     _children.push_back(group);
+}
+
+void Army::addSoldier(Soldier *unit) {
+    if (_economy.canAffordSoldier()) {
+        _economy.buySoldier();
+        _addUnit(unit);
+    } else {
+        std::cout << NOT_ENOUGH_COINS << std::endl;
+    }
+}
+
+void Army::addSniper(Sniper *unit) {
+    if (_economy.canAffordSniper()) {
+        _economy.buySniper();
+        _addUnit(unit);
+    } else {
+        std::cout << NOT_ENOUGH_COINS << std::endl;
+    }
 }
 
 void Army::remove(Unit *group) {
@@ -33,17 +53,21 @@ void Army::moveLeft() {
     }
 }
 
-void Army::attack(Army* group) {
+void Army::attack(Army* enemyArmy) {
+    int enemyUnitsCount = enemyArmy->getUnitsCount();
     for (auto& unit : _children) {
-        for (auto& enemyUnit : group->getChildren()) {
+        for (auto& enemyUnit : enemyArmy->getChildren()) {
             unit->attack(enemyUnit);
         }
     }
-    group->update();
+    enemyArmy->update();
+    _economy.killedUnits(enemyUnitsCount - enemyArmy->getUnitsCount());
 }
 
 void Army::print() {
     std::cout << "Army:" << std::endl;
+    std::cout << "Economy: " << _economy.getCoins() << std::endl;
+    std::cout << "Units:" << std::endl;
     for (auto& unit : _children) {
         unit->print();
     }
@@ -57,4 +81,12 @@ void Army::update() {
         }
     }
     _children = newChildren;
+}
+
+int Army::getUnitsCount() {
+    return _children.size();
+}
+
+bool Army::isEmpty() {
+    return getUnitsCount() == 0;
 }
