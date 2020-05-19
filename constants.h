@@ -26,7 +26,7 @@ const int COINS_PER_KILL = 4;
 
 // Messages
 const std::string INVALID_INPUT = "Sorry, I don't understand your command";
-const std::string INSTRUCTION = "cso - create soldier, csn - create sniper, ml - move left, mr - move right";
+const std::string INSTRUCTION = "cso - create soldier, csn - create sniper, ml - move left, mr - move right, a - attack";
 const std::string NOT_ENOUGH_COINS = "Sorry, you don't have enough coins to afford buying this unit.";
 
 #endif //TP_PATTERNS_CONSTANTS_H

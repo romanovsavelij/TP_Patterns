@@ -7,6 +7,7 @@
 #include "UnitsGroup.h"
 #include "Economy.h"
 #include "../Units/Unit.h"
+#include <algorithm>
 
 class Unit;
 class Sniper;
